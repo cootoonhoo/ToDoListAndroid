@@ -124,12 +124,12 @@ fun AddTaskDialog(
                             onClick = {
                                 if (title.isNotBlank()) {
                                     onAddTask(title, description, startTime, endTime)
-                                    onDismiss()
                                     // Reseta os campos após adicionar
                                     title = ""
                                     description = ""
                                     startTime = "00:00"
                                     endTime = "00:00"
+                                    onDismiss()
                                 }
                             },
                             modifier = Modifier.padding(start = 8.dp)

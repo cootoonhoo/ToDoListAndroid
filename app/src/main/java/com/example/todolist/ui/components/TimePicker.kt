@@ -23,6 +23,21 @@ fun TimePicker(
     onValueChange: (String) -> Unit,
     label: String = "Horário"
 ) {
+    /** Claude 3.5 Hakiu - Início
+     * Faça esse OutlinedTextField virar um time picker de 24hrs
+     *
+     *
+     * Copy
+     * OutlinedTextField(
+     *     value = startTime,
+     *     onValueChange = { newValue ->
+     *         startTime = newValue.filter { it.isDigit() }
+     *     },
+     *     label = { Text("Horário Inicial") },
+     *     keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
+     *     modifier = Modifier.weight(1f)
+     * )
+     */
     var hours by remember { mutableStateOf(value.take(2).padStart(2, '0')) }
     var minutes by remember { mutableStateOf(value.takeLast(2).padStart(2, '0')) }
 
@@ -60,3 +75,4 @@ fun TimePicker(
         )
     }
 }
+/** Claude 3.5 Hakiu - Final */
