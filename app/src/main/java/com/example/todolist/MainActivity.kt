@@ -1,24 +1,33 @@
-package com.example.todolist
+package com.example.todolist;
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import com.example.todolist.ui.theme.ToDoListTheme
+import androidx.lifecycle.ViewModelProvider
+import com.example.todolist.data.TodoDatabase
+import com.example.todolist.repository.TodoRepository
+import com.example.todolist.ui.theme.TodoListTheme
+import com.example.todolist.viewmodel.TodoViewModel
+import com.example.todolist.viewmodel.TodoViewModelFactory
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
+
+        // Inicialize o banco de dados, DAO e Repository conforme sua estrutura
+        val database = TodoDatabase.getDatabase(this)
+        val repository = TodoRepository(database.todoDao())
+
+        // Crie a instância do ViewModel usando ViewModelProvider tradicional
+        val viewModel = ViewModelProvider(
+            this,
+            TodoViewModelFactory(repository)
+        ).get(TodoViewModel::class.java)
+
+        // Configure o setContent passando a instância do ViewModel para o composable principal
         setContent {
-            ToDoListTheme {
+            TodoListTheme {
+                TodoApp(viewModel = viewModel)
             }
         }
     }
