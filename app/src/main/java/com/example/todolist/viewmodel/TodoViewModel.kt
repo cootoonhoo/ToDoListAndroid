@@ -10,13 +10,9 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 
-/** ChatGPT - Início
- * Em kotlin, crie um app que permite salvar localmente uma tarefa que possui:
- *  - Titulo
- *  - Descrição
- *  - Horário Inicial
- *  - Horário Término
- *  - Concluido (booleano)
+/** ChatGPT o3-mini - 
+ * Em kotlin, crie uma variavel todos e funcoes CRUD(addTodo, updateTodo e deleteTodo) para armazenar um objeto Todo, 
+ * utilizando o padrão ViewModel do JetpackCompose, considere que já tenha um TodoRepository configurado.
  */
 
 class TodoViewModel(private val repository: TodoRepository) : ViewModel() {
