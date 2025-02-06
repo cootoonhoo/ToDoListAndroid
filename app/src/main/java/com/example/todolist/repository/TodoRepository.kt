@@ -4,6 +4,16 @@ import com.example.todolist.data.Todo
 import com.example.todolist.data.TodoDao
 import kotlinx.coroutines.flow.Flow
 
+/** ChatGPT - Início
+ * Em kotlin, crie um repositório que permite salvar localmente uma tarefa que possui:
+ *  - Titulo
+ *  - Descrição
+ *  - Horário Inicial
+ *  - Horário Término
+ *  - Concluido (booleano)
+ */
+
+
 class TodoRepository(private val todoDao: TodoDao) {
 
     val allTodos: Flow<List<Todo>> = todoDao.getAllTodos()
@@ -20,3 +30,5 @@ class TodoRepository(private val todoDao: TodoDao) {
         todoDao.deleteTodo(todo)
     }
 }
+/** ChatGPT - Fim */
+

@@ -3,6 +3,15 @@ package com.example.todolist.data
 import androidx.room.*
 import kotlinx.coroutines.flow.Flow
 
+/** ChatGPT - Início
+ * Em kotlin, crie um app que permite salvar localmente uma tarefa que possui:
+ *  - Titulo
+ *  - Descrição
+ *  - Horário Inicial
+ *  - Horário Término
+ *  - Concluido (booleano)
+ */
+
 @Dao
 interface TodoDao {
 
@@ -18,3 +27,5 @@ interface TodoDao {
     @Delete
     suspend fun deleteTodo(todo: Todo)
 }
+
+/** ChatGPT - Fim */

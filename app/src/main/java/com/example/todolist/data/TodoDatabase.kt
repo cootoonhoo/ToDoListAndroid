@@ -5,6 +5,16 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 
+/** ChatGPT - Início
+ * Em kotlin, crie um app que permite salvar localmente uma tarefa que possui:
+ *  - Titulo
+ *  - Descrição
+ *  - Horário Inicial
+ *  - Horário Término
+ *  - Concluido (booleano)
+ */
+
+
 @Database(entities = [Todo::class], version = 1, exportSchema = false)
 abstract class TodoDatabase : RoomDatabase() {
 
@@ -26,3 +36,5 @@ abstract class TodoDatabase : RoomDatabase() {
         }
     }
 }
+
+/** ChatGPT - Fim */

@@ -10,6 +10,15 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 
+/** ChatGPT - Início
+ * Em kotlin, crie um app que permite salvar localmente uma tarefa que possui:
+ *  - Titulo
+ *  - Descrição
+ *  - Horário Inicial
+ *  - Horário Término
+ *  - Concluido (booleano)
+ */
+
 class TodoViewModel(private val repository: TodoRepository) : ViewModel() {
 
     val todos: StateFlow<List<Todo>> = repository.allTodos
@@ -44,3 +53,5 @@ class TodoViewModelFactory(private val repository: TodoRepository) : ViewModelPr
     }
 
 }
+
+/** ChatGPT - Fim */

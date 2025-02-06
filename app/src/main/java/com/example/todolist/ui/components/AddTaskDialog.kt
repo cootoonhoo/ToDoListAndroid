@@ -21,13 +21,72 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
-import kotlin.text.filter
-import kotlin.text.isDigit
 import kotlin.text.isNotBlank
 
+
+/** Claude 3.5 Hakiu - Início
+ * Faça com que ao clicar no floatingActionButton, apareça um dialog com esse formulário
+ * { paddingValues ->
+ *     Column(
+ *         modifier = Modifier
+ *             .padding(paddingValues)
+ *             .padding(0.dp)
+ *             .fillMaxSize()
+ *     ) {
+ *         OutlinedTextField(
+ *             value = title,
+ *             onValueChange = { title = it },
+ *             label = { Text("Título") },
+ *             modifier = Modifier.fillMaxWidth()
+ *         )
+ *         Spacer(modifier = Modifier.height(8.dp))
+ *         OutlinedTextField(
+ *             value = description,
+ *             onValueChange = { description = it },
+ *             label = { Text("Descrição") },
+ *             modifier = Modifier.fillMaxWidth()
+ *         )
+ *         Spacer(modifier = Modifier.height(8.dp))
+ *         Row(
+ *             modifier = Modifier.fillMaxWidth(),
+ *             horizontalArrangement = Arrangement.spacedBy(8.dp)
+ *         ) {
+ *             OutlinedTextField(
+ *                 value = startTime,
+ *                 onValueChange = { newValue ->
+ *                     startTime = newValue.filter { it.isDigit() }
+ *                 },
+ *                 label = { Text("Horário Inicial") },
+ *                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
+ *                 modifier = Modifier.weight(1f)
+ *             )
+ *             OutlinedTextField(
+ *                 value = endTime,
+ *                 onValueChange = { newValue ->
+ *                     endTime = newValue.filter { it.isDigit() }
+ *                 },
+ *                 label = { Text("Horário Final") },
+ *                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
+ *                 modifier = Modifier.weight(1f)
+ *             )
+ *         }
+ *         Spacer(modifier = Modifier.height(16.dp))
+ *         LazyColumn {
+ *             items(todos) { todo ->
+ *                 TodoItem(
+ *                     todo = todo,
+ *                     onCheckedChange = { checked ->
+ *                         viewModel.updateTodo(todo.copy(isCompleted = checked))
+ *                     },
+ *                     onDelete = { viewModel.deleteTodo(todo) }
+ *                 )
+ *             }
+ *         }
+ *     }
+ * }
+ */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun AddTaskDialog(
@@ -124,13 +183,16 @@ fun AddTaskDialog(
                             onClick = {
                                 if (title.isNotBlank()) {
                                     onAddTask(title, description, startTime, endTime)
-                                    // Reseta os campos após adicionar
+                                    /** Marco Antonio - Inicio
+                                     * Razão : Os valores eram 'herdados' em novas tarefas
+                                     */
                                     title = ""
                                     description = ""
                                     startTime = "00:00"
                                     endTime = "00:00"
                                     onDismiss()
-                                }
+                                    /** Marco Antonio - Fim */
+                                    }
                             },
                             modifier = Modifier.padding(start = 8.dp)
                         ) {
@@ -142,3 +204,5 @@ fun AddTaskDialog(
         }
     }
 }
+
+/** Claude 3.5 Hakiu - Final */
