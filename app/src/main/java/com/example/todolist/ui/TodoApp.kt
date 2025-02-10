@@ -24,6 +24,7 @@ import androidx.compose.ui.window.Dialog
 import com.example.todolist.data.TodoDao
 import com.example.todolist.data.TodoDatabase
 import com.example.todolist.ui.components.AddTaskDialog
+import com.example.todolist.ui.components.ProfileHeader
 import com.example.todolist.ui.components.WelcomeTextComponent
 import com.example.todolist.ui.theme.Purple80
 import com.example.todolist.viewmodel.TodoViewModel
@@ -79,6 +80,8 @@ fun TodoApp(viewModel: TodoViewModel) {
             verticalArrangement = Arrangement.spacedBy(8.dp)
         ) {
             item {
+                ProfileHeader()
+                Spacer(modifier = Modifier.height(8.dp))
                 WelcomeTextComponent(qntTarefas = qntTodos)
                 Spacer(modifier = Modifier.height(16.dp))
             }

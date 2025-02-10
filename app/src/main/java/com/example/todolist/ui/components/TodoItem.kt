@@ -11,10 +11,13 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.todolist.R
 import com.example.todolist.data.Todo
 import com.example.todolist.ui.theme.LightBlue
 import com.example.todolist.ui.theme.LightGreen
@@ -40,7 +43,7 @@ fun TodoItem(
             text = todo.startTime,
             modifier = Modifier.width(50.dp),
             textAlign = TextAlign.Center,
-            fontWeight = FontWeight.Bold,
+            fontFamily = FontFamily(Font(R.font.nunito_bold)),
             fontSize = 16.sp,
             color = Color.Black
         )
@@ -84,7 +87,7 @@ fun TodoItem(
                         // Título
                         Text(
                             text = todo.title,
-                            fontWeight = FontWeight.Bold,
+                            fontFamily = FontFamily(Font(R.font.nunito_bold)),
                             fontSize = 22.sp
                         )
                         Spacer(modifier = Modifier.height(4.dp))
@@ -94,17 +97,19 @@ fun TodoItem(
                             Text(
                                 text = todo.description,
                                 fontSize = 16.sp,
-                                color = Color.DarkGray
+                                color = Color.DarkGray,
+                                fontFamily = FontFamily(Font(R.font.nunito_regular)),
                             )
                             Spacer(modifier = Modifier.height(8.dp))
                         }
                         // Horário
-                        Text(
-                            text = "${todo.startTime} - ${todo.endTime}",
-                            fontWeight = FontWeight.Bold,
-                            fontSize = 18.sp,
-                            color = Color.DarkGray
-                        )
+                        if(todo.startTime.isNotEmpty() && todo.endTime.isNotEmpty())
+                            Text(
+                                text = "${todo.startTime} - ${todo.endTime}",
+                                fontFamily = FontFamily(Font(R.font.nunito_bold)),
+                                fontSize = 18.sp,
+                                color = Color.DarkGray
+                            )
                     }
                     // Botão de excluir
                     IconButton(

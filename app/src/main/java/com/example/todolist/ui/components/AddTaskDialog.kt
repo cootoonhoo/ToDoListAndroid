@@ -87,7 +87,7 @@ import kotlin.text.isNotBlank
  *     }
  * }
  */
-@OptIn(ExperimentalMaterial3Api::class)
+
 @Composable
 fun AddTaskDialog(
     showDialog: Boolean,
